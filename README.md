@@ -15,7 +15,7 @@ A. Ravi, S. Repakula, U. K. Dutta and M. Parmar, "Buy Me That Look: An Approach 
 ```
 
 
-![Problem Illustration](assets\idea.PNG)
+![Problem Illustration](https://github.com/gautamgc17/Fashion-Products-Recommendation-Engine/blob/e07ead007a9fe79645e315c15133f6f1de1ed2a1/assets/idea.PNG)
 
 ## Business Problem:
 The business problem addressed in this research paper is the need for a computer vision-based technique to recommend similar fashion products based on images of models or user-generated content. The goal is to provide an enhanced shopping experience on fashion e-commerce platforms by suggesting similar fashion items to the ones worn by the model in the product display page (PDP) image. Thus, the idea is to recommend all the secondary clothes worn by the model in the query image along with the primary product using Deep learning techniques. 
