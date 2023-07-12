@@ -49,10 +49,26 @@ To retrieve similar fashion products based on a query image, we employ embedding
 
 ![Siamese Network](https://github.com/gautamgc17/Fashion-Products-Recommendation-Engine/blob/e07ead007a9fe79645e315c15133f6f1de1ed2a1/assets/siamese_nets.png)
 
-The Pinterest "[Shop The Look](https://dl.acm.org/doi/abs/10.1145/3394486.3403372)" dataset was used for this task. The dataset includes pairs of scenes and products. The products are images taken in a professional environment, while the scenes show the same products in a more relaxed or informal setting. The dataset follows a specific format, where the scenes and products are encoded with a signature which can be converted into a URL using a function provided in the [STL-Dataset] (https://github.com/kang205/STL-Dataset) GitHub repository. The bounding box is represented by four numbers: ```(left, top, right, bottom)``` and all the numbers are normalized.
+The Pinterest "[Shop The Look](https://dl.acm.org/doi/abs/10.1145/3394486.3403372)" dataset was used for this task. "Shop The Look" is a dataset taken from "<a href="https://arxiv.org/pdf/1812.01748.pdf"> Wang-Cheng Kang, Eric Kim, Jure Leskovec, Charles Rosenberg, Julian McAuley (2019). Complete the Look: Scene-based Complementary Product Recommendation</a>". In Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR'19). The dataset includes pairs of scenes and products. The products are images taken in a professional environment, while the scenes show the same products in a more relaxed or informal setting. The dataset follows a specific format, where the scenes and products are encoded with a signature which can be converted into a URL using a function provided in the [STL-Dataset] (https://github.com/kang205/STL-Dataset) GitHub repository. The bounding box is represented by four numbers: ```(left, top, right, bottom)``` and all the numbers are normalized.
 
 ```
-Raymond Shiau, Hao-Yu Wu, Eric Kim, Yue Li Du, Anqi Guo, Zhiyuan Zhang, Eileen Li, Kunlong Gu, Charles Rosenberg, and Andrew Zhai. 2020. Shop The Look: Building a Large Scale Visual Shopping System at Pinterest. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining (KDD '20). Association for Computing Machinery, New York, NY, USA, 3203–3212. https://doi.org/10.1145/3394486.3403372
+@article{DBLP:journals/corr/abs-1812-01748,
+  author       = {Wang{-}Cheng Kang and
+                  Eric Kim and
+                  Jure Leskovec and
+                  Charles Rosenberg and
+                  Julian J. McAuley},
+  title        = {Complete the Look: Scene-based Complementary Product Recommendation},
+  journal      = {CoRR},
+  volume       = {abs/1812.01748},
+  year         = {2018},
+  url          = {http://arxiv.org/abs/1812.01748},
+  eprinttype    = {arXiv},
+  eprint       = {1812.01748},
+  timestamp    = {Mon, 22 Jul 2019 19:11:00 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1812-01748.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
 ```
 
 ## 5. Image Retrieval
