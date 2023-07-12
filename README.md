@@ -62,5 +62,18 @@ After embedding generating step for the fashion product catalog, we proceed to c
 
 ### References
 - [Human Pose Estimation Model OpenCV](https://github.com/quanhua92/human-pose-estimation-opencv)
+- [Gender Prediction using MobilenetV2](https://github.com/e0xextazy/gender-est)
+- [Shop The Look: Building a Large Scale Visual Shopping System at Pinterest](https://dl.acm.org/doi/abs/10.1145/3394486.3403372)
+- [Buy Me That Look: An Approach for Recommending Similar Fashion Products](https://ieeexplore.ieee.org/abstract/document/9565561)
+- [Complete the Look: Scene-based Complementary Product Recommendation](https://arxiv.org/pdf/1812.01748.pdf)
+- [Mean Average Precision (mAP) metric for Object Detection](https://towardsdatascience.com/breaking-down-mean-average-precision-map-ae462f623a52)
+- [You Only Look Once (YoLo): Unified, Real-Time Object Detection](https://arxiv.org/pdf/1506.02640v1.pdf)
+- [Ultralytics YOLOv5](https://github.com/ultralytics/yolov5)
+- [Train YOLOv5 on Custom Dataset (Reference-1)](https://blog.roboflow.com/how-to-train-yolov5-on-a-custom-dataset/)
+- [Train YOLOv5 on Custom Dataset (Reference-2)](https://docs.ultralytics.com/yolov5/tutorials/train_custom_data/)
+- [Pinterest’s Shop The Look Data](https://github.com/kang205/STL-Dataset)
+- [Image similarity estimation using a Siamese Network with a triplet loss](https://keras.io/examples/vision/siamese_network/)
+- [Understanding FAISS for Similarity Search](https://towardsdatascience.com/understanding-faiss-619bb6db2d1a)
+
 
 
