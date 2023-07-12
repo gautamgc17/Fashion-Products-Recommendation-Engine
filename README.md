@@ -26,24 +26,25 @@ The significance of this problem lies in promoting cross-sells to boost revenue 
 ## Overall Architecture
 
 ![Project Workflow](https://github.com/gautamgc17/Fashion-Products-Recommendation-Engine/blob/e07ead007a9fe79645e315c15133f6f1de1ed2a1/assets/architecture.png)
-#### 1. Data Acquisition and Exploratory Data Analysis
+
+## 1. Data Acquisition and Exploratory Data Analysis
 To begin building the Fashion Recommendation Engine, we require a diverse catalog of fashion products. By utilizing Selenium, a popular browser automation tool, we can search Myntra's e-commerce website using specific keywords and extract product details. This includes saving the product URLs and its associated metadata. Additionally, this can be used to download the images and build a database which will serve as a foundation for recommending fashion products across different categories using embedding generation technique followed by similarity search measures, during the inference stage of the final pipeline.
 
-#### 2. Full-shot Image Detection and Gender Classification
-In order to recommend relevant items to the user it is essential to first detect the gender of the person present in the query image. Doing so will allow us to generate and query embeddings only on certain subsets of the catalog instead of the whole database. This will also help us in reducing irrelevant recommendations to the user based on their gender.
+## 2. Full-shot Image Detection and Gender Classification
+In order to recommend relevant items to the user it is essential to first detect the gender of the person present in the query image. Doing so will allow us to generate and query embeddings only on certain subsets of the catalog instead of the whole database. This will also in reducing irrelevant recommendations to the user based on their gender.
 
-To tackle this problem, firstly a [Pose Estimation](https://github.com/quanhua92/human-pose-estimation-opencv) model was utilized to identify a partial or full-shot look image in the PDP page. A full-shot look image refers to the one that is displaying a person from the head to the toe. Thereafter, transfer learning was utilized to develop a [gender classification](https://github.com/e0xextazy/gender-est) model using PyTorch framework, which was fine tuned on a variety of publicly available open source datasets.
+To tackle this problem, firstly a [Pose Estimation](https://github.com/quanhua92/human-pose-estimation-opencv) model was utilized to identify a partial or full-shot look image in the PDP page. A full-shot look image refers to the one that is displaying a person from the head to the toe. Thereafter, transfer learning was utilized to develop a [Gender Classification](https://github.com/e0xextazy/gender-est) model using PyTorch framework, which was fine tuned on a variety of publicly available open source datasets.
 
-#### 3. Fashion article Detection and Localisation
+## 3. Fashion article Detection and Localisation
 The front-facing full-shot look image obtained from the previous step contains multiple fashion articles and accessories worn by the model. Corresponding to each of these articles, we have to recommend a list of similar fashion products. For this subtask of identifying different article types, we must crop, or segment out the individual regions Of interests (ROIs) from the full-shot look image. 
 
-Therefore, [YOLOv5](https://github.com/ultralytics/yolov5) object detection model was trained on a custom dataset containing 240 images (180 images in traing set and 60 images in validation set) for detecting and localizing the fashion product articles into three broad categories, namely - topwear, bottomwear and footwear. Transfer Learning technique was employed to [train YOlOv5 with custom dataset](https://docs.ultralytics.com/yolov5/tutorials/train_custom_data/) by loading YOLOv5s (small variant of YOLOv5) weights initially trained on the COCO Dataset to fine-tune the model for our use-case. 
+Therefore, [YOLOv5](https://github.com/ultralytics/yolov5) object detection model was trained with a custom dataset containing 240 images (180 images in traing set and 60 images in validation set) for detecting and localizing the fashion product articles into three broad categories, namely - topwear, bottomwear and footwear. Transfer Learning technique was employed to [Train YOlOv5 on Custom Dataset](https://docs.ultralytics.com/yolov5/tutorials/train_custom_data/) by loading YOLOv5s (small variant of YOLOv5) weights initially trained on the COCO Dataset to fine-tune the model for our use-case. 
 
 The structure of the yaml file for training on custom datasetlooks like:
 ![yaml file](https://github.com/gautamgc17/Fashion-Products-Recommendation-Engine/blob/e07ead007a9fe79645e315c15133f6f1de1ed2a1/assets/format.PNG)
 
 
-#### 4. Candidate Retrieval (Embedding Generation)
+## 4. Candidate Retrieval (Embedding Generation)
 To retrieve similar fashion products based on a query image, we employ embedding generation to represent images/products. This involves using a [Siamese Network](https://keras.io/examples/vision/siamese_network/), a special type of neural network that takes three inputs: anchor, positive, and negative. The anchor and positive inputs represent similar products, while the anchor and negative inputs represent dissimilar products. Through a CNN backbone, in our case - [Resnet50](https://keras.io/api/applications/resnet/) model, the network generates n-dimensional vectors for the anchor, positive, and negative inputs. A specific loss function, known as the Triplet Loss Function, is used to minimize the distance metric between the anchor and positive inputs while maximizing the distance metric between the anchor and negative inputs. This approach enables effective retrieval of fashion products that are similar to the items in the query image.
 
 ![Siamese Network](https://github.com/gautamgc17/Fashion-Products-Recommendation-Engine/blob/e07ead007a9fe79645e315c15133f6f1de1ed2a1/assets/siamese_nets.png)
@@ -54,7 +55,7 @@ The Pinterest "[Shop The Look](https://dl.acm.org/doi/abs/10.1145/3394486.340337
 Raymond Shiau, Hao-Yu Wu, Eric Kim, Yue Li Du, Anqi Guo, Zhiyuan Zhang, Eileen Li, Kunlong Gu, Charles Rosenberg, and Andrew Zhai. 2020. Shop The Look: Building a Large Scale Visual Shopping System at Pinterest. In Proceedings of the 26th ACM SIGKDD International Conference on Knowledge Discovery &amp; Data Mining (KDD '20). Association for Computing Machinery, New York, NY, USA, 3203–3212. https://doi.org/10.1145/3394486.3403372
 ```
 
-#### 5. Image Retrieval
+## 5. Image Retrieval
 After embedding generating step for the fashion product catalog, we proceed to create a pipeline that integrates all the modules. This pipeline takes a query image as input and generates relevant recommendations as output. In this project, [FAISS (Facebook AI Similarity Search)](https://github.com/facebookresearch/faiss) library, which is an open-source library developed by Facebook's AI Research team, has been utilized to retrieve similar articles. It is based on approximate nearest neighbor search algorithm and designed to efficiently search and retrieve similar vectors or embeddings in large-scale datasets. 
 
 ![Project Pipeline](https://github.com/gautamgc17/Fashion-Products-Recommendation-Engine/blob/e07ead007a9fe79645e315c15133f6f1de1ed2a1/assets/pipeline.png)
