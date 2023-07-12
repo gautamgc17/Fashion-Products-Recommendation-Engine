@@ -1,0 +1,7 @@
+train: /kaggle/input/yolo-detection/stl_dataset_for_yolo/images/train
+
+val: /kaggle/input/yolo-detection/stl_dataset_for_yolo/images/val
+
+nc: 3
+
+names: ['bottomwear', 'footwear', 'topwear']
