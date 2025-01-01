@@ -1,7 +1,7 @@
 # Fashion Product Recommendation Engine 
 
 ## Project Overview
-- Developed an end-to-end content-based fashion product recommendation system.
+- An end-to-end content-based fashion product recommendation system.
 - Key components include human keypoint estimation, fashion article detection and localization, gender detection,
 embedding generation followed by item similarity search.
 - The model pipeline leverages visual similarity of items for product recommendation.
